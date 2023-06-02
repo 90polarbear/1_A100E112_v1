@@ -6,6 +6,7 @@
     function calculateTotal() {
       var soyMilkPrice = 20;
       var milkTeaPrice = 25;
+      var pearlPrice = 5;
       
       // 取得填寫的數量
       var soyMilkQuantity = parseInt(document.getElementById("soyMilkQuantity").value);
@@ -13,7 +14,7 @@
       
       // 計算費用
       var soyMilkTotal = soyMilkPrice * soyMilkQuantity;
-      var milkTeaTotal = milkTeaPrice * milkTeaQuantity;
+      var milkTeaTotal = (milkTeaPrice + pearlPrice) * milkTeaQuantity;
       var total = soyMilkTotal + milkTeaTotal;
       
       // 顯示費用結果
@@ -32,7 +33,7 @@
     <input type="number" id="soyMilkQuantity" name="soyMilkQuantity" min="0" value="0"><br><br>
     
     <label for="milkTeaQuantity">奶茶（NT$25）數量：</label>
-    <input type="number" id="milkTeaQuantity" name="milkTeaQuantity" min="0" value="0"><br><br>
+    <input type="number" id="milkTeaQuantity" name="milkTeaQuantity" min="0" value="0"><input type="加珍珠5元"><br><br>
     
     <input type="button" value="計算費用" onclick="calculateTotal()">
   </form>
