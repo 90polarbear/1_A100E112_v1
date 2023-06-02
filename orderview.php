@@ -1,3 +1,7 @@
+<?php
+  include 'ordermodel.php';
+  include 'ordercontroller.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +43,7 @@
 <body>
   <h1>早餐費用試算</h1>
   
-  <form>
+  <form action="ordercontroller.php" method="POST">
     <label for="name">訂購者：</label>
     <input type="text" id="name" name="name" required><br><br>
     
