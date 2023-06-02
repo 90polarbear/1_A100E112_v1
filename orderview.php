@@ -33,7 +33,9 @@
     <input type="number" id="soyMilkQuantity" name="soyMilkQuantity" min="0" value="0"><br><br>
     
     <label for="milkTeaQuantity">奶茶（NT$25）數量：</label>
-    <input type="number" id="milkTeaQuantity" name="milkTeaQuantity" min="0" value="0"><input type="加珍珠5元"><br><br>
+    <input type="number" id="milkTeaQuantity" name="milkTeaQuantity" min="0" value="0"><br><br>
+    <label for="pearlQuantity">珍珠（NT$5）</label>
+    <input type="checkbox" id="pearlQuantity" name="pearlQuantity"><br><br>
     
     <input type="button" value="計算費用" onclick="calculateTotal()">
   </form>
