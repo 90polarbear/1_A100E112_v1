@@ -9,13 +9,27 @@
       var pearlPrice = 5;
       
       // 取得填寫的數量
-      var soyMilkQuantity = parseInt(document.getElementById("soyMilkQuantity").value);
-      var milkTeaQuantity = parseInt(document.getElementById("milkTeaQuantity").value);
+      var soyMilkQuantity = 0;
+      var milkTeaQuantity = 0;
+      var pearlSelected = document.getElementById("pearlCheckbox").checked;
+      
+      if (document.getElementById("soyMilkRadio").checked) {
+        soyMilkQuantity = parseInt(document.getElementById("soyMilkQuantity").value);
+      } else if (document.getElementById("milkTeaRadio").checked) {
+        milkTeaQuantity = parseInt(document.getElementById("milkTeaQuantity").value);
+      }
       
       // 計算費用
-      var soyMilkTotal = soyMilkPrice * soyMilkQuantity;
-      var milkTeaTotal = (milkTeaPrice + pearlPrice) * milkTeaQuantity;
-      var total = soyMilkTotal + milkTeaTotal;
+      var total = 0;
+      
+      if (soyMilkQuantity > 0) {
+        total = soyMilkPrice * soyMilkQuantity;
+      } else if (milkTeaQuantity > 0) {
+        total = milkTeaPrice * milkTeaQuantity;
+        if (pearlSelected) {
+          total += pearlPrice * milkTeaQuantity;
+        }
+      }
       
       // 顯示費用結果
       document.getElementById("total").innerText = total;
@@ -29,13 +43,15 @@
     <label for="name">訂購者：</label>
     <input type="text" id="name" name="name" required><br><br>
     
-    <label for="soyMilkQuantity">豆漿（NT$20）數量：</label>
+    <input type="radio" id="soyMilkRadio" name="drink" value="soyMilk" onchange="calculateTotal()" checked>
+    <label for="soyMilkRadio">豆漿（NT$20）數量：</label>
     <input type="number" id="soyMilkQuantity" name="soyMilkQuantity" min="0" value="0"><br><br>
     
-    <label for="milkTeaQuantity">奶茶（NT$25）數量：</label>
-    <input type="number" id="milkTeaQuantity" name="milkTeaQuantity" min="0" value="0"><br><br>
-    <label for="pearlQuantity">珍珠（NT$5）</label>
-    <input type="checkbox" id="pearlQuantity" name="pearlQuantity"><br><br>
+    <input type="radio" id="milkTeaRadio" name="drink" value="milkTea" onchange="calculateTotal()">
+    <label for="milkTeaRadio">奶茶（NT$25）數量：</label>
+    <input type="number" id="milkTeaQuantity" name="milkTeaQuantity" min="0" value="0">
+    <label for="pearlCheckbox">珍珠（NT$5）</label>
+    <input type="checkbox" id="pearlCheckbox" name="pearlCheckbox" onchange="calculateTotal()"><br><br>
     
     <input type="button" value="計算費用" onclick="calculateTotal()">
   </form>
